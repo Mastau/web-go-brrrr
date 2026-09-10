@@ -1,0 +1,18 @@
+services:
+  cyberlab:
+    image: ${CYBERLAB_IMAGE:-cyberlab:latest}
+    container_name: ${CYBERLAB_CONTAINER:-cyberlab}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      LOCAL_UID: ${LOCAL_UID:-1000}
+      LOCAL_GID: ${LOCAL_GID:-1000}
+    hostname: cyberlab
+    stdin_open: true
+    tty: true
+    volumes:
+      - type: bind
+        source: ${CYBERLAB_WORKSPACE:-./workspace}
+        target: /workspace
+    working_dir: /workspace

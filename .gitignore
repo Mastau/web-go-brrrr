@@ -1,0 +1,5 @@
+workspace/
+.env
+.DS_Store
+*.log
+AGENTS.md

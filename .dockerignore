@@ -1,0 +1,5 @@
+.git
+.gitignore
+workspace
+*.log
+.DS_Store

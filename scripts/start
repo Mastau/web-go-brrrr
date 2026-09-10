@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+
+project_root="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
+workspace="${CYBERLAB_WORKSPACE:-${HOME}/CyberLab}"
+
+mkdir -p "${workspace}"
+export CYBERLAB_WORKSPACE="${workspace}"
+
+if [ "$(uname -s)" = "Linux" ]; then
+    export LOCAL_UID="${LOCAL_UID:-$(id -u)}"
+    export LOCAL_GID="${LOCAL_GID:-$(id -g)}"
+else
+    export LOCAL_UID="${LOCAL_UID:-1000}"
+    export LOCAL_GID="${LOCAL_GID:-1000}"
+fi
+
+cd "${project_root}"
+exec docker compose up --detach cyberlab

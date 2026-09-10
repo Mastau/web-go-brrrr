@@ -1,0 +1,15 @@
+export EDITOR="${EDITOR:-vim}"
+export PAGER="${PAGER:-less}"
+export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
+
+setopt AUTO_CD HIST_IGNORE_DUPS SHARE_HISTORY
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+
+autoload -Uz compinit && compinit
+PROMPT='%F{cyan}%n@%m%f:%F{blue}%~%f %# '
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias grep='grep --color=auto'
